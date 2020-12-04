@@ -1,24 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+//pages
+import Home from './pages/Home'
+import About from './pages/About'
+import Categories from './pages/Categories'
+import ShopCategory from './pages/ShopCategory'
+import Error from './pages/Error'
+// components
+import ShopItem from './components/ShopItem'
+import Header from './components/Header'
+import Footer from './components/Footer'
 
 function App() {
+
+  // if (loading) {
+  // return <Loading />
+  // }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/categories">
+          <Categories />
+        </Route>
+        <Route path="/categories/:category">
+          <ShopCategory />
+        </Route>
+        <Route path="/categories/:category/:id">
+          <ShopItem />
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="*">
+          <Error />
+        </Route>
+      </Switch>
+      <Footer />
+    </Router>
   );
 }
 

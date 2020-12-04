@@ -1,0 +1,49 @@
+
+/*
+=============== 
+Slider
+===============
+*/
+.single-ad img {
+  height: 300px;
+  width: 500px;
+}
+
+.prev-btn,
+.next-btn {
+  position: static;
+  top: 200px;
+  transform: translateY(-50%);
+  background: var(--clr-grey-5);
+  color: var(--clr-white);
+  width: 1.25rem;
+  height: 1.25rem;
+  display: grid;
+  place-items: center;
+  border-color: transparent;
+  font-size: 1rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.prev-btn:hover,
+.next-btn:hover {
+  background: var(--clr-primary-5);
+}
+.prev-btn {
+  left: 0;
+}
+.next-btn {
+  right: 0;
+}
+
+.active-slide {
+  opacity: 1;
+  transform: translateX(0);
+}
+.last-slide {
+  transform: translateX(-100%);
+}
+.next-btn-slide {
+  transform: translateX(100%);
+}
