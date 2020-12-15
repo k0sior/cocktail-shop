@@ -5,6 +5,7 @@ import { useGlobalContext } from '../context'
 const SearchBox = () => {
   const { setSearch, search, drinks } = useGlobalContext();
   const [showSearchList, setShowSearchList] = useState(true);
+  const [isEmptyBox, setIsEmptyBox] = useState(false)
   const searchValue = useRef('');
 
   const searchCocktail = () => {
@@ -20,6 +21,19 @@ const SearchBox = () => {
       setShowSearchList(true)
     }
   }
+  let searchDrink = drinks.filter((drink) => {
+    return drink.name.toLowerCase().indexOf(search.toLowerCase()) !== -1 || drink.category.toLowerCase().indexOf(search.toLowerCase()) !== -1 || drink.glass.toLowerCase().indexOf(search.toLowerCase()) !== -1
+  })
+
+  useEffect(() => {
+    if(searchDrink.length < 1) {
+      setIsEmptyBox(true)
+    } else { 
+      setIsEmptyBox(false)
+
+    }
+
+  }, [search])
 
   useEffect(() => {
     if (search.length >= 1) {
@@ -29,10 +43,8 @@ const SearchBox = () => {
     }
   }, [search])
 
-  const searchDrink = drinks.filter((drink) => {
-    return drink.name.toLowerCase().indexOf(search.toLowerCase()) !== -1 || drink.category.toLowerCase().indexOf(search.toLowerCase()) !== -1 || drink.glass.toLowerCase().indexOf(search.toLowerCase()) !== -1
-  })
 
+  console.log(searchDrink.length);
   return (
     <div className='nav-search'>
       <form className="search-form" onSubmit={handleSubmit}>
@@ -45,8 +57,8 @@ const SearchBox = () => {
         <ul>
           {searchDrink.map((drink, i) => {
             const { id, name, image, glass, category } = drink;
-            if (searchDrink.length === 0) {
-              return <h4>no items found</h4>
+            if (isEmptyBox) {
+              return <p>no items found</p>
             }
             return (
               <Link

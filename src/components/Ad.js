@@ -14,7 +14,7 @@ const Ad = () => {
     if (index < 0) {
       setIndex(lastIndex)
     }
-    if (index === lastIndex) {
+    if (index > lastIndex) {
       setIndex(0)
     }
   }, [index, displayAds])
@@ -22,7 +22,7 @@ const Ad = () => {
   useEffect(() => {
     let slider = setInterval(() => {
       setIndex(index + 1)
-    }, 5000);
+    }, 4000);
     return () => clearInterval(slider)
   }, [index])
 
@@ -40,14 +40,12 @@ const Ad = () => {
           position = "prev-slide"
         }
         return (
-          <>
-            <img
-              key={i}
-              className={`${position} ads`} id={`${id}-id`}
-              src={image}
-              alt={name}
-            />
-          </>
+          <img
+            key={i}
+            className={`${position} ads`} id={`${id}-id`}
+            src={image}
+            alt={name}
+          />
         )
       })}
       <button className="prev-btn" onClick={() => setIndex(index - 1)}>
