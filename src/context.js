@@ -61,7 +61,7 @@ const AppProvider = ({ children }) => {
     setLoading(false)
   }, [])
 
-eEffect(() => {
+  useEffect(() => {
     fetchDrinks()
   }, [])
 
