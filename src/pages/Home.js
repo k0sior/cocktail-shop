@@ -1,15 +1,15 @@
 import React from 'react'
 
 //components
-import Ad from "../components/Ad/Ad"
+import Ad from "../components/Ad"
 import Main from "../components/Main"
 
 const Home = () => {
   return (
-    <main className="main">
-      {/* <Ad /> */}
+    <>
+      <Ad />
       <Main />
-    </main>
+    </>
   )
 }
 

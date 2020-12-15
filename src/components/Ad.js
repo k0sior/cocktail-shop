@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 // import DATA from PATH
-import "./ad.css"
-import { advertises } from "../../data";
+import { advertises } from "../data";
 // ready to use by passing json data
 // displaying ads by sliding, also enables user to slide manualy
 
@@ -28,26 +27,27 @@ const Ad = () => {
   }, [index])
 
   return (
-    <div className="ads">
+    <div className="div-ads">
       {displayAds.map((item, i) => {
         const { id, name, image } = item;
-
         let position = "next-slide"
-
         if (i === index) {
           position = "active-slide"
         }
-
         if (i === index - 1 ||
           (index === 0 && i === displayAds.length - 1)
         ) {
           position = "prev-slide"
         }
-
         return (
-          <div className={`${position} single-ad`} key={id}>
-            <img src={image} alt={name} className="ad-img" />
-          </div>
+          <>
+            <img
+              key={i}
+              className={`${position} ads`} id={`${id}-id`}
+              src={image}
+              alt={name}
+            />
+          </>
         )
       })}
       <button className="prev-btn" onClick={() => setIndex(index - 1)}>

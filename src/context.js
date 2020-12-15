@@ -9,7 +9,7 @@ const AppProvider = ({ children }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [drinks, setDrinks] = useState([]);
-
+  const [currentCategory, setCurrentCategory] = useState("all")
 
   const openModal = () => {
     setIsModalOpen(true)
@@ -23,7 +23,7 @@ const AppProvider = ({ children }) => {
       closeModal();
     }
   }
-  
+
   const fetchDrinks = useCallback(async () => {
     setLoading(true)
     try {
@@ -39,6 +39,7 @@ const AppProvider = ({ children }) => {
             strAlcoholic,
             strGlass,
             strCategory,
+            strInstructions,
           } = item;
           return {
             id: idDrink,
@@ -47,6 +48,7 @@ const AppProvider = ({ children }) => {
             info: strAlcoholic,
             glass: strGlass,
             category: strCategory,
+            instructions: strInstructions,
           }
         })
         setDrinks(newDrinks);
@@ -56,11 +58,14 @@ const AppProvider = ({ children }) => {
     } catch (error) {
       console.log(error);
     }
+    setLoading(false)
   }, [])
 
-  useEffect(() => {
+eEffect(() => {
     fetchDrinks()
   }, [])
+
+
   return <AppContext.Provider
     value={{
       loading,
@@ -71,6 +76,8 @@ const AppProvider = ({ children }) => {
       openModal,
       closeModal,
       handleModalOpen,
+      currentCategory,
+      setCurrentCategory,
     }}>
     {children}
   </AppContext.Provider>

@@ -15,7 +15,7 @@ export const links = [
   {
     id: 2,
     name: "Kategorie",
-    url: "/categories",
+    url: "/cat",
   },
   {
     id: 3,

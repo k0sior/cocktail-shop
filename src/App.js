@@ -4,18 +4,24 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/About'
 import Categories from './pages/Categories'
-import ShopCategory from './pages/ShopCategory'
+import SingleCategory from './pages/SingleCategory'
+import Contact from './pages/Contact'
 import Error from './pages/Error'
 // components
-import ShopItem from './components/ShopItem'
+import SingleDrink from './components/SingleDrink'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Loading from './components/Loading'
+//context 
+import { useGlobalContext } from "./context"
 
 function App() {
 
-  // if (loading) {
-  // return <Loading />
-  // }
+  const { loading } = useGlobalContext();
+
+  if (loading) {
+    return <Loading />
+  }
   return (
     <Router>
       <Header />
@@ -23,17 +29,20 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/categories">
+        <Route exact path="/cat">
           <Categories />
         </Route>
-        <Route path="/categories/:category">
-          <ShopCategory />
+        <Route path="/cat/:category">
+          <SingleCategory />
         </Route>
-        <Route path="/categories/:category/:id">
-          <ShopItem />
+        <Route path="/drink/:id">
+          <SingleDrink />
         </Route>
-        <Route path="/about">
+        <Route exact path="/about">
           <About />
+        </Route>
+        <Route exact path="/contact">
+          <Contact />
         </Route>
         <Route path="*">
           <Error />

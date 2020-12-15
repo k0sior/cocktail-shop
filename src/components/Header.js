@@ -12,6 +12,7 @@ import Modal from "./Modal"
 const Header = () => {
   const { openModal, closeModal, handleModalOpen } = useGlobalContext();
 
+  
   return (
     <header className="nav">
       <div className="nav-top">
@@ -25,17 +26,24 @@ const Header = () => {
               // if name === category 
               if (id === 2) {
                 return <li key={id}>
-                  <Link 
+                  <Link
                     to={`${url}`}
                     className="nav-link"
                     onMouseOver={openModal}
+                    onClick={closeModal}
                   >
                     {name}
                   </Link>
                 </li>
               }
               return <li key={id}>
-                <Link to={`${url}`} className="nav-link">{name}</Link>
+                <Link
+                  to={`${url}`}
+                  className="nav-link"
+                  onMouseOver={closeModal}
+                >
+                  {name}
+                </Link>
               </li>
             })}
             <Modal />
