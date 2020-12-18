@@ -10,7 +10,6 @@ const SingleCategory = () => {
   return (
     <section className="section-categories">
       <article className="single-category">
-        <h2>{currentCategory}</h2>
         <Link
           to="/cat"
           className="back-link"

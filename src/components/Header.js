@@ -1,10 +1,11 @@
 // React
 import React from 'react'
-import { FaBars } from "react-icons/fa"
+import { FaBars, FaShoppingCart } from "react-icons/fa"
 import { Link } from 'react-router-dom'
-// data + functions
-import { logo, links, social } from "../data"
+//context
 import { useGlobalContext } from '../context';
+// data 
+import { logo, links, social } from "../data"
 // Components
 import SearchBox from "./SearchBox"
 import Modal from "./Modal"
@@ -12,7 +13,6 @@ import Modal from "./Modal"
 const Header = () => {
   const { openModal, closeModal, handleModalOpen } = useGlobalContext();
 
-  
   return (
     <header className="nav">
       <div className="nav-top">
@@ -50,13 +50,19 @@ const Header = () => {
           </ul>
         </div>
         <div className="nav-right" onMouseOver={closeModal}>
-          <ul className="social-icons">
-            {social.map((icons) => {
+          <ul className="nav-icons">
+            <li className="nav-link">
+              <Link to="/cart">
+                <FaShoppingCart />
+              </Link>
+            </li>
+            {/* {social.map((icons) => {
               const { id, url, icon } = icons;
               return <li key={id} className="nav-link">
                 <a href={url}>{icon}</a>
               </li>
             })}
+             */}
           </ul>
           <button className="nav-toggle">
             <FaBars />

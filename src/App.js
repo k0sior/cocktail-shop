@@ -1,11 +1,13 @@
+//react
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 //pages
 import Home from './pages/Home'
 import About from './pages/About'
 import Categories from './pages/Categories'
-import SingleCategory from './pages/SingleCategory'
+// import SingleCategory from './pages/SingleCategory'
 import Contact from './pages/Contact'
+import Cart from './pages/Cart'
 import Error from './pages/Error'
 // components
 import SingleDrink from './components/SingleDrink'
@@ -33,7 +35,7 @@ function App() {
           <Categories />
         </Route>
         <Route path="/cat/:category">
-          <SingleCategory />
+          <Categories />
         </Route>
         <Route path="/drink/:id">
           <SingleDrink />
@@ -43,6 +45,9 @@ function App() {
         </Route>
         <Route exact path="/contact">
           <Contact />
+        </Route>
+        <Route>
+          <Cart exact path="/cart"/>
         </Route>
         <Route path="*">
           <Error />

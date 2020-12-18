@@ -1,5 +1,7 @@
+// react
 import React from 'react'
 import { Link } from 'react-router-dom'
+// context
 import { useGlobalContext } from "../context"
 
 const SingleCategoryItem = ({ id, image, name, glass, category }) => {
@@ -14,7 +16,7 @@ const SingleCategoryItem = ({ id, image, name, glass, category }) => {
         <h3>{name}</h3>
         <h4>{glass}</h4>
       </Link>
-      <h4>${(Math.random() * 100).toFixed()},99</h4>
+      <h4>${(Math.random() * 100).toFixed(2)}</h4>
       <Link
         to={`/cat/${category}`}
         onClick={() => setCurrentCategory(category)}

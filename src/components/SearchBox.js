@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { Link } from "react-router-dom"
+
 import { useGlobalContext } from '../context'
 
 const SearchBox = () => {
@@ -26,13 +27,11 @@ const SearchBox = () => {
   })
 
   useEffect(() => {
-    if(searchDrink.length < 1) {
+    if (searchDrink.length < 1) {
       setIsEmptyBox(true)
-    } else { 
+    } else {
       setIsEmptyBox(false)
-
     }
-
   }, [search])
 
   useEffect(() => {
@@ -43,8 +42,6 @@ const SearchBox = () => {
     }
   }, [search])
 
-
-  console.log(searchDrink.length);
   return (
     <div className='nav-search'>
       <form className="search-form" onSubmit={handleSubmit}>
@@ -57,9 +54,6 @@ const SearchBox = () => {
         <ul>
           {searchDrink.map((drink, i) => {
             const { id, name, image, glass, category } = drink;
-            if (isEmptyBox) {
-              return <p>no items found</p>
-            }
             return (
               <Link
                 key={i}

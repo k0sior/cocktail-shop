@@ -1,10 +1,41 @@
-import React, { useState, useContext, useEffect } from 'react'
-import { useCallback } from 'react'
+//react
+import React, { useState, useContext, useEffect, useCallback, useReducer } from 'react'
+//reducer
+import reducer from './reducer'
 
 const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s='
 const AppContext = React.createContext();
 
+const initialState = {
+  cart: [],
+  itemsTotal: 0,
+  itemsAmount: 0,
+}
+
 const AppProvider = ({ children }) => {
+
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+  const addToCart = (itemId) => {
+    dispatch({ type: "ADD_ITEM", content: itemId })
+  }
+
+  const increaseAmount = (itemId) => {
+    dispatch({ type: "INCREASE", content: itemId })
+  }
+
+  const decreaseAmount = (itemId) => {
+    dispatch({ type: "DECREASE", content: itemId })
+  }
+
+  const removeCartItem = (itemId) => {
+    dispatch({ type: "REMOVE_ITEM", content: itemId })
+  }
+
+  const clearCart = () => {
+    dispatch({ type: "CLEAR_CART" })
+  }
+
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [search, setSearch] = useState("");
@@ -65,9 +96,13 @@ const AppProvider = ({ children }) => {
     fetchDrinks()
   }, [])
 
-
   return <AppContext.Provider
     value={{
+      addToCart,
+      increaseAmount,
+      decreaseAmount,
+      removeCartItem,
+      clearCart,
       loading,
       drinks,
       search,

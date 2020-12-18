@@ -149,29 +149,46 @@ Buttons
 
 .btn:hover {
   background: var(--clr-primary-2);
-  color: var(--clr-white);
+  color: #fff;
 }
 
 .btn-white {
   background: transparent;
-  color: var(--clr-white);
-  border-color: var(--clr-white);
+  color: #fff;
+  border-color: #fff;
 }
 
 .btn-white:hover {
-  background: var(--clr-white);
+  background: #fff;
   color: var(--clr-primary-2);
 }
 
 .btn-primary {
   background: var(--clr-primary-2);
-  color: var(--clr-white);
+  color: #fff;
   border-color: transparent;
 }
 
 .btn-primary:hover {
   background: var(--clr-primary-6);
   color: var(--clr-primary-2);
+}
+
+.btn-danger {
+  background: maroon;
+  border-color: maroon;
+  color: hsl(210, 36%, 96%);
+}
+
+.btn-danger:hover {
+  background-color: #fa2626;
+  border-color: #fa2626;
+  color: rgb(133, 0, 0);
+}
+
+.btn-green {
+  background: hsl(125, 71%, 66%);
+  border-color: black;
 }
 
 .btn-block {
@@ -238,6 +255,7 @@ Navbar
 .nav-link {
   color: var(--clr-grey-4);
   transition: var(--transition);
+  cursor: pointer;
 }
 
 .nav-link a {
@@ -250,9 +268,14 @@ Navbar
   text-decoration: underline;
 }
 
+
 .nav-link a:hover {
   color: var(--clr-primary-1);
   text-decoration: underline;
+}
+
+.nav-icons li {
+  font-size: 40px;
 }
 
 .nav-bars {
@@ -286,19 +309,19 @@ Navbar
 Navbar - Modal
 ======
 */
+
 .modal-container {
+  display: none;
   position: absolute;
   top: 4rem;
   max-width: 80vw;
   width: auto;
   height: auto;
-  left: 10%;
-  display: none;
   place-items: center;
   z-index: -1;
   transition: var(--transition);
   color: black;
-  transform: scale(0);
+  opacity: 0;
   background: var(--clr-grey-9);
   padding: 20px;
   border: 3px solid var(--clr-primary-6);
@@ -316,8 +339,9 @@ Navbar - Modal
 
 .show-modal {
   display: block;
-  transform: scale(1);
+  opacity: 1;
   z-index: 2;
+  transition: var(--transition);
 }
 
 .modal-div {
@@ -341,12 +365,15 @@ Navbar - Modal
   background-color: white;
 }
 
+.modal-active {
+  background-color: #fff;
+}
+
 .subcategory-container {
   width: 100%;
   background: white;
   right: 0;
   left: 0;
-
 }
 
 .subcategory-link {
@@ -457,7 +484,7 @@ Slider
   position: absolute;
   height: 400px;
   width: 800px;
-  transition: all 300ms linear;
+  transition: var(--transition);
 }
 
 .ads {
@@ -485,7 +512,7 @@ Slider
   margin-right: 750px;
 }
 
-.next-btn{
+.next-btn {
   margin-left: 750px;
 }
 
@@ -589,9 +616,53 @@ Categories
   text-decoration: underline;
 }
 
+.add-to-cart-btn {
+  font-size: 16px;
+
+}
+
 .category-link:hover {
   text-decoration: underline;
 }
+
+/* 
+====== 
+Cart
+======
+*/
+
+.section-cart {
+  text-align: center;
+  left: 5vw;
+  width: 70vw;
+  height: auto;
+  min-height: 400px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-item-info {}
+
+.cart-btn-container {
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-btn-container input {
+  font-size: 24px;
+  width: 40px;
+  height: auto;
+  border: none;
+  background: none;
+  margin: 0 -13px 0 13px;
+}
+
 
 /* 
 ====== 

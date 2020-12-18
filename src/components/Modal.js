@@ -1,13 +1,13 @@
+// react
 import React, { useState } from 'react'
-import { useGlobalContext } from '../context';
 import { Link } from 'react-router-dom'
-
+// context
+import { useGlobalContext } from '../context';
 
 const Modal = () => {
-
-  // należy stworzyć f zmieniającą bgc na biały dla aktywnej kategorii
   const [active, setActive] = useState(false)
   const [previewCat, setPreviewCat] = useState("Ordinary drink")
+
   const { drinks, isModalOpen, closeModal, handleModalOpen, setCurrentCategory } = useGlobalContext();
 
   const allCategories = [...new Set(drinks.map((item) => item.category))];
@@ -15,7 +15,7 @@ const Modal = () => {
   const handleClick = (event) => {
     setCurrentCategory(event);
     closeModal()
-  } 
+  }
   
   return (
     <aside className={`${isModalOpen ? "modal-container show-modal" : "modal-container"}`} onMouseLeave={handleModalOpen} >
@@ -47,11 +47,16 @@ const Modal = () => {
             if (category === previewCat) {
               return (
                 <div key={i} className="subcategory-link">
-                  <Link to={`/drink/${id}`}
+                  <Link 
+                    to={`/drink/${id}`}
                     onClick={closeModal}
                   >
-                    <img src={image} alt={name} className="subcategory-img" />
-                    <span className="subcategory-name">{name}</span>
+                    <img
+                      src={image}
+                      alt={name} 
+                      className="subcategory-img"
+                    />
+                    <h4 className="subcategory-name">{name}</h4>
                   </Link>
                 </div>
               )

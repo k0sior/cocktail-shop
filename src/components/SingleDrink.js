@@ -1,7 +1,11 @@
+//react
 import React, { useState, useEffect } from 'react'
-import Loading from './Loading'
 import { useParams, Link } from 'react-router-dom'
+import { FaCartPlus } from "react-icons/fa"
+//context
 import { useGlobalContext } from '../context'
+
+import Loading from './Loading'
 const url = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i='
 
 const SingleDrink = () => {
@@ -9,6 +13,11 @@ const SingleDrink = () => {
   const [loading, setLoading] = useState(false);
   const [cocktail, setCocktail] = useState(null);
   const { setCurrentCategory } = useGlobalContext();
+
+  const addToCart = () => {
+    
+  }
+
 
   useEffect(() => {
     setLoading(true);
@@ -66,6 +75,7 @@ const SingleDrink = () => {
     return <h2 className="section-title">cocktail doesn't exist</h2>
   }
   const { name, image, info, category, glass, instructions, ingredients } = cocktail;
+  
   return (
     <section className="section cocktail-section">
       <Link
@@ -84,6 +94,11 @@ const SingleDrink = () => {
             </span>
           </h4>
           <h4>
+            price: <span className="drink-data">
+              ${(Math.random() * 100).toFixed(2)}
+              </span>
+          </h4>
+          <h4>
             info: <span className="drink-data">
               {info}
             </span>
@@ -99,15 +114,22 @@ const SingleDrink = () => {
             </span>
           </h4>
           <h4>
-            instructions: <span className="drink-data">
-              {instructions}
-            </span>
-          </h4>
-          <h4>
             ingredients: {ingredients.map((item, i) => {
             return item ? <span key={i}>{item}, </span> : null
           })}
           </h4>
+          <h4>
+            instructions: <span className="drink-data">
+              {instructions}
+            </span>
+          </h4>
+          <button
+            className="btn add-to-cart-btn btn-primary"
+            onClick={() => console.log("dodaje do koszyka")}
+          >
+            dodaj do koszyka
+            <FaCartPlus style={{ marginTop: 5, marginLeft: 5}}/>
+          </button>
         </div>
       </div>
     </section>

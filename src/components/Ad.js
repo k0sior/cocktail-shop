@@ -1,9 +1,8 @@
+// react
 import React, { useEffect, useState } from 'react'
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
-// import DATA from PATH
+// data
 import { advertises } from "../data";
-// ready to use by passing json data
-// displaying ads by sliding, also enables user to slide manualy
 
 const Ad = () => {
   const [displayAds, setDisplayAds] = useState(advertises)
