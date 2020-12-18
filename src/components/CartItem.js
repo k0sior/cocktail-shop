@@ -8,9 +8,8 @@ const CartItem = (img, name, category) => {
 
   const { increaseAmount, decreaseAmount, removeItem } = useGlobalContext();
 
-  const itemAmount = useRef(0)
-  
   return (
+    
     <div className="cart-item">
       <div className="cart-item-info">
         <h4>nazwa</h4>

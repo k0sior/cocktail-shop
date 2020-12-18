@@ -1,6 +1,15 @@
+//not in use
+
 const reducer = (state, action) => {
 
   switch (action.type) {
+    case 'ADD_TO_CART': 
+      let newItem = state.drinks.find((item) => {
+        if (item.id === action.id) {
+          return {...state, cart: [...state.cart, newItem]}
+        }
+      })
+
     case "CLEAR_CART":
       return { ...state, cart: [] }
 

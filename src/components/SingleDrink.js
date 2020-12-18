@@ -12,12 +12,7 @@ const SingleDrink = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
   const [cocktail, setCocktail] = useState(null);
-  const { setCurrentCategory } = useGlobalContext();
-
-  const addToCart = () => {
-    
-  }
-
+  const { setCurrentCategory, addToCart } = useGlobalContext();
 
   useEffect(() => {
     setLoading(true);
@@ -27,6 +22,7 @@ const SingleDrink = () => {
         const data = await response.json();
         if (data.drinks) {
           const {
+            idDrink: id,
             strDrink: name,
             strDrinkThumb: image,
             strAlcoholic: info,
@@ -53,7 +49,7 @@ const SingleDrink = () => {
             strIngredient8,
           ]
           const newCocktail = {
-            name, image, info, category, glass, instructions, ingredients
+            id, name, image, info, category, glass, instructions, ingredients
           }
           setCocktail(newCocktail);
         } else {
@@ -125,7 +121,7 @@ const SingleDrink = () => {
           </h4>
           <button
             className="btn add-to-cart-btn btn-primary"
-            onClick={() => console.log("dodaje do koszyka")}
+            onClick={() => addToCart(id)}
           >
             dodaj do koszyka
             <FaCartPlus style={{ marginTop: 5, marginLeft: 5}}/>
