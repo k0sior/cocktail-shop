@@ -79,7 +79,6 @@ const AppProvider = ({ children }) => {
   //reducer functions
   const addToCart = (id) => {
     dispatch({ type: 'ADD_TO_CART', payload: id })
-    // dispatch({ type: "VALIDATE_CART", payload: id })
     dispatch({ type: "GET_TOTALS" })
   }
   const increaseAmount = (id) => {
@@ -101,11 +100,6 @@ const AppProvider = ({ children }) => {
     dispatch({ type: "CLEAR_CART" })
     dispatch({ type: "GET_TOTALS" })
   }
-
-  /* causes bug while displaying items in cart */
-  // useEffect(() => {
-  //   dispatch({ type: "GET_TOTALS" })
-  // }, [state.cart])
 
   return <AppContext.Provider
     value={{

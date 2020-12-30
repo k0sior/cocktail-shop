@@ -42,7 +42,6 @@ const reducer = (state, action) => {
       return { ...state, cart: state.cart.filter((item) => item.id != action.payload) }
 
     case "GET_TOTALS":
-      console.log(state.cart);
       let { total, amount } = state.cart.reduce((cartTotal, cartItem) => {
         const { price, amount } = cartItem;
         const itemTotal = price * amount;
