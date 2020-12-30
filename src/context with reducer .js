@@ -1,17 +1,17 @@
 //react
 import React, { useState, useContext, useEffect, useCallback, useReducer } from 'react'
 //reducer
-import reducer from './reducer'
+import reducer from './reducer';
+
 const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s='
-
-let initialState = {
-  drinksDB: [],
-  cart: [],
-  total: 0,
-  amount: 0,
-}
-
 const AppContext = React.createContext();
+
+const initialState = {
+  itemAmount: 0,
+  totalPrice: 0,
+  cart: [],
+  base: fetchDrinks,
+}
 
 const AppProvider = ({ children }) => {
 
@@ -22,9 +22,30 @@ const AppProvider = ({ children }) => {
   const [currentCategory, setCurrentCategory] = useState("Wszystkie");
   const [state, dispatch] = useReducer(reducer, initialState)
 
+  const addItem = (id) => {
+    dispatch({ type: "ADD_TO_CART", products: id })
+  }
+  
+  const increaseAmount = (id) => {
+    dispatch({ type: "INCREASE", products: id })
+  }
+  
+  const decreaseAmount = (id) => {
+    dispatch({ type: "DECREASE", products: id })
+  }
+  
+  const removeItem = (id) => {
+    dispatch({ type: 'REMOVE_ITEM', products: id })
+  }
+  
+  const clearCart = () => {
+    dispatch({ type: "CLEAR_CART" })
+  }
+
   const openModal = () => {
     setIsModalOpen(true)
   }
+
   const closeModal = () => {
     setIsModalOpen(false)
   }
@@ -62,7 +83,6 @@ const AppProvider = ({ children }) => {
             instructions: strInstructions,
           }
         })
-        initialState.drinksDB = newDrinks;
         setDrinks(newDrinks);
       } else {
         setDrinks([])
@@ -76,40 +96,15 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     fetchDrinks()
   }, [])
-  //reducer functions
-  const addToCart = (id) => {
-    dispatch({ type: 'ADD_TO_CART', payload: id })
-    // dispatch({ type: "VALIDATE_CART", payload: id })
-    dispatch({ type: "GET_TOTALS" })
-  }
-  const increaseAmount = (id) => {
-    dispatch({ type: "INCREASE", payload: id })
-    dispatch({ type: "GET_TOTALS" })
-  }
-
-  const decreaseAmount = (id) => {
-    dispatch({ type: "DECREASE", payload: id })
-    dispatch({ type: "GET_TOTALS" })
-  }
-
-  const removeItem = (id) => {
-    dispatch({ type: "REMOVE_ITEM", payload: id })
-    dispatch({ type: "GET_TOTALS" })
-  }
-
-  const clearCart = () => {
-    dispatch({ type: "CLEAR_CART" })
-    dispatch({ type: "GET_TOTALS" })
-  }
-
-  /* causes bug while displaying items in cart */
-  // useEffect(() => {
-  //   dispatch({ type: "GET_TOTALS" })
-  // }, [state.cart])
 
   return <AppContext.Provider
     value={{
       ...state,
+      addItem,
+      increaseAmount,
+      decreaseAmount,
+      removeItem,
+      clearCart,
       loading,
       drinks,
       search,
@@ -120,11 +115,7 @@ const AppProvider = ({ children }) => {
       handleModalOpen,
       currentCategory,
       setCurrentCategory,
-      addToCart,
-      increaseAmount,
-      decreaseAmount,
-      removeItem,
-      clearCart
+
     }}>
     {children}
   </AppContext.Provider>

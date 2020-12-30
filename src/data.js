@@ -58,26 +58,38 @@ export const advertises = [
   {
     id: 1,
     name: "bananowy",
-    image: "https://www.jestemfit.pl/upload/gallery/2016/04/id_8986_1460717693_750x500.jpg" 
+    image: "https://www.jestemfit.pl/upload/gallery/2016/04/id_8986_1460717693_750x500.jpg"
   },
   {
     id: 2,
     name: "rozne koktajle",
-    image: "https://kuchnialidla.pl/img/PL/587x330/c27ff396bffa-e14bb81f215f-NET-FOTO-PL-BS-Kuchnia-Lidla-Pawel-koktajle-cross-KW35_30567_12082019_SS_51566_1250x700.jpg" 
+    image: "https://kuchnialidla.pl/img/PL/587x330/c27ff396bffa-e14bb81f215f-NET-FOTO-PL-BS-Kuchnia-Lidla-Pawel-koktajle-cross-KW35_30567_12082019_SS_51566_1250x700.jpg"
   },
   {
     id: 3,
     name: "kiwi",
-    image: "https://cdn.aniagotuje.com/pictures/articles/2018/04/47516-v-900x556.jpg" 
+    image: "https://cdn.aniagotuje.com/pictures/articles/2018/04/47516-v-900x556.jpg"
   },
   {
     id: 4,
     name: "jarmuz",
-    image: "https://www.zajadam.pl/wp-content/uploads/2015/02/koktajl-jarmuz-6-654x435.jpg" 
+    image: "https://www.zajadam.pl/wp-content/uploads/2015/02/koktajl-jarmuz-6-654x435.jpg"
   },
   {
     id: 5,
     name: "toskafka",
-    image: "https://www.kenwoodworld.com/Global/recipes/shutterstock_134079221_780x410px.jpg" 
-  }  
+    image: "https://www.kenwoodworld.com/Global/recipes/shutterstock_134079221_780x410px.jpg"
+  }
+]
+
+export const drinksDB = [
+  {
+    category: "Ordinary Drink",
+    glass: "Cocktail glass",
+    id: "11872",
+    image: "https://www.thecocktaildb.com/images/media/drink/vr6kle1504886114.jpg",
+    info: "Alcoholic",
+    instructions: "Shake all ingredients with ice, strain into a chilled cocktail glass, and serve.",
+    name: "Orgasm"
+  }
 ]

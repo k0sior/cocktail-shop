@@ -1,5 +1,7 @@
+//react
 import React from 'react'
 import { Link } from 'react-router-dom';
+//context
 import { useGlobalContext } from "../context"
 //components
 import SingleCategoryItem from "../components/SingleCategoryItem"
@@ -8,23 +10,21 @@ const Categories = () => {
 
   const { drinks, currentCategory, setCurrentCategory } = useGlobalContext();
 
-  const allCategories = [...new Set(drinks.map((item) => item.category))];
+  const allCategories = ["Wszystkie", ...new Set(drinks.map((item) => item.category))];
 
   return (
     <section className="section-categories">
       <p>Wybierz katogrię:</p>
       <ul>
-        <li>
-          <Link
-            to="/cat"
-            onClick={() => setCurrentCategory("all")}
-          >
-            Wszystkie
-          </Link>
-        </li>
         {allCategories.map((category, i) => {
+          let underline = false;
+          if (currentCategory === category) {
+            underline = true
+          } else {
+            underline = false;
+          }
           return (
-            <li key={i}>
+            <li key={i} className={`${underline ? "underline" : ""}`}>
               <Link
                 to={`/cat/${category}`}
                 onClick={() => setCurrentCategory(category)}
@@ -39,7 +39,7 @@ const Categories = () => {
         {drinks.map((drink, i) => {
           if (currentCategory === drink.category) {
             return <SingleCategoryItem key={i} {...drink} />
-          } if (currentCategory === "all") {
+          } if (currentCategory === "Wszystkie") {
             return <SingleCategoryItem key={i} {...drink} />
           }
         })}

@@ -46,8 +46,16 @@ const SearchBox = () => {
     <div className='nav-search'>
       <form className="search-form" onSubmit={handleSubmit}>
         <div className="form-control">
-          <input type="text" id="name" autoComplete="off" ref={searchValue} onChange={searchCocktail} onClick={handleList} />
-          <button className="btn btn-primary">Szukaj</button>
+          <input
+            type="text"
+            id="name"
+            autoComplete="off"
+            placeholder="Szukaj..."
+            ref={searchValue}
+            onChange={searchCocktail}
+            onClick={handleList}
+          />
+          {/* <button className="btn btn-primary">Szukaj</button> */}
         </div>
       </form>
       <div className={`${showSearchList ? "search-list search-list-show" : "search-list"}`} onMouseLeave={() => setShowSearchList(false)}>

@@ -41,7 +41,8 @@ const Ad = () => {
         return (
           <img
             key={i}
-            className={`${position} ads`} id={`${id}-id`}
+            className={`${position} ads`} 
+            id={`${id}-id`}
             src={image}
             alt={name}
           />

@@ -71,7 +71,6 @@ const SingleDrink = () => {
     return <h2 className="section-title">cocktail doesn't exist</h2>
   }
   const { name, image, info, category, glass, instructions, ingredients } = cocktail;
-  
   return (
     <section className="section cocktail-section">
       <Link
@@ -83,50 +82,46 @@ const SingleDrink = () => {
       <h2 className="section-title">{name}</h2>
       <div className="drink">
         <img src={image} alt={name} />
-        <div className="drink-info">
-          <h4>
-            name: <span className="drink-data">
-              {name}
-            </span>
-          </h4>
-          <h4>
-            price: <span className="drink-data">
-              ${(Math.random() * 100).toFixed(2)}
-              </span>
-          </h4>
-          <h4>
-            info: <span className="drink-data">
-              {info}
-            </span>
-          </h4>
-          <h4>
-            category: <span className="drink-data">
-              {category}
-            </span>
-          </h4>
-          <h4>
-            glass: <span className="drink-data">
-              {glass}
-            </span>
-          </h4>
-          <h4>
-            ingredients: {ingredients.map((item, i) => {
-            return item ? <span key={i}>{item}, </span> : null
-          })}
-          </h4>
-          <h4>
-            instructions: <span className="drink-data">
-              {instructions}
-            </span>
-          </h4>
+        <article className="drink-data">
+          <figure className="drink-data-name">
+            <p>Nazwa:</p>
+            <h4>{name}</h4>
+          </figure>
+          <figure className="drink-data-price">
+            <p>Cena:</p>
+            <h4>${(Math.random() * 100).toFixed(2)}</h4>
+          </figure>
+          <figure className="drink-data-info">
+            <p>Informacje:</p>
+            <h4>{info}</h4>
+          </figure>
+          <figure className="drink-data-category">
+            <p>Kategoria:</p>
+            <h4>{category}</h4>
+          </figure>
+          <figure className="drink-data-glass">
+            <p>Naczynie:</p>
+            <h4>{glass}</h4>
+          </figure>
+          <figure className="drink-data-ingredients">
+            <p>Potrzebne składniki:</p>
+            {ingredients.map((item, i) => {
+              return item ?
+                <h4 key={i}>{item},</h4> : null
+            })}
+          </figure>
+          <figure className="drink-data-intruction">
+            <p>Sposób przyrządzenia:</p>
+            <h4 >{instructions}</h4>
+          </figure>
           <button
             className="btn add-to-cart-btn btn-primary"
             onClick={() => addToCart(id)}
           >
             dodaj do koszyka
-            <FaCartPlus style={{ marginTop: 5, marginLeft: 5}}/>
+            <FaCartPlus style={{ marginTop: 5, marginLeft: 5 }} />
           </button>
-        </div>
+        </article>
       </div>
     </section>
   )

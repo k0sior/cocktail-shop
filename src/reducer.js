@@ -1,45 +1,65 @@
-//not in use
+//drinks redcer
 
 const reducer = (state, action) => {
 
   switch (action.type) {
-    case 'ADD_TO_CART': 
-      let newItem = state.drinks.find((item) => {
-        if (item.id === action.id) {
-          return {...state, cart: [...state.cart, newItem]}
+
+    case 'ADD_TO_CART':
+      let newItem = state.drinksDB.find((item) => {
+        if (item.id === action.payload) {
+          return item
         }
       })
+      newItem = { ...newItem, amount: 1, price: (Math.random() * 100).toFixed(2) }
+
+      let newCart = [...state.cart, newItem]
+
+      return { ...state, cart: newCart }
 
     case "CLEAR_CART":
       return { ...state, cart: [] }
 
     case "INCREASE":
-      let increaseItem = state.cart.map((cartItem) => {
-        if (cartItem.id === action.content) {
-          return { ...cartItem, action: cartItem.amount + 1 }
+      let increaseItemAmount = state.cart.map((cartItem) => {
+        if (cartItem.id == action.payload) {
+          return { ...cartItem, amount: cartItem.amount + 1 }
         }
         return cartItem
       })
-      return { ...state, cart: increaseItem }
+      return { ...state, cart: increaseItemAmount }
 
     case "DECREASE":
-      let decreaseItem = state.cart.map((cartItem) => {
-        if (cartItem.id === action.content) {
-          return { ...cartItem, amount: cartItem.amount - 1 }
+      let decreaseItemAmount = state.cart.map((cartItem) => {
+        if (cartItem.id == action.payload) {
+          if (Number(cartItem.amount) > 1)
+            return { ...cartItem, amount: cartItem.amount - 1 }
         }
         return cartItem
-      }).filter((cartItem) => cartItem.amount !== 0)
-      
-      return { ...state, cart: decreaseItem }
+      })
+      return { ...state, cart: decreaseItemAmount }
 
     case 'REMOVE_ITEM':
-      return {...state, cart: state.cart.filter((item) => item.id !== action.content)}
+      return { ...state, cart: state.cart.filter((item) => item.id != action.payload) }
 
+    case "GET_TOTALS":
+      console.log(state.cart);
+      let { total, amount } = state.cart.reduce((cartTotal, cartItem) => {
+        const { price, amount } = cartItem;
+        const itemTotal = price * amount;
+        cartTotal.total += itemTotal;
+        cartTotal.amount += amount;
+        return cartTotal
+      },
+        {
+          total: 0,
+          amount: 0,
+        })
+      total = parseFloat(total.toFixed(2))
+      return { ...state, total, amount }
 
     default:
       throw new Error("nie wybrano właściwej akcji")
   }
-
 }
 
 export default reducer;
