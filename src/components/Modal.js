@@ -26,7 +26,7 @@ const Modal = () => {
             {allCategories.map((category, i) => {
               return (
                 <Link
-                  key={i}
+                  key={"modal-categories-"+i}
                   to={`/cat/${category}`}
                 >
                   <li
@@ -46,7 +46,7 @@ const Modal = () => {
             const { id, name, category, image } = item;
             if (category === previewCat) {
               return (
-                <div key={i} className="subcategory-link">
+                <div key={"subcategroy-link-"+i} className="subcategory-link">
                   <Link 
                     to={`/drink/${id}`}
                     onClick={closeModal}

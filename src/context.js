@@ -76,6 +76,7 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     fetchDrinks()
   }, [])
+
   //reducer functions
   const addToCart = (id) => {
     dispatch({ type: 'ADD_TO_CART', payload: id })

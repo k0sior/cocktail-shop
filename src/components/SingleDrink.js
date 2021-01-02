@@ -107,7 +107,7 @@ const SingleDrink = () => {
             <p>Potrzebne składniki:</p>
             {ingredients.map((item, i) => {
               return item ?
-                <h4 key={i}>{item},</h4> : null
+                <h4 key={"drink-data-ingredients"+i}>{item},</h4> : null
             })}
           </figure>
           <figure className="drink-data-intruction">

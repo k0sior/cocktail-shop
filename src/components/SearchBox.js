@@ -64,7 +64,7 @@ const SearchBox = () => {
             const { id, name, image, glass, category } = drink;
             return (
               <Link
-                key={i}
+                key={"search-list-item-"+i}
                 to={`/drink/${id}`}
                 onClick={() => setShowSearchList(false)}
               >

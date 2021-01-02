@@ -18,10 +18,10 @@ const SingleCategory = () => {
           Wróć
       </Link>
         <div className="drinks">
-          {drinks.map((drink, i) => {            
+          {drinks.map((drink, i) => {
             if (drink.category === currentCategory) {
               return (
-                <SingleCategoryItem key={i} {...drink} />
+                <SingleCategoryItem key={"single-category-item-" + i} {...drink} />
               )
             }
           })}

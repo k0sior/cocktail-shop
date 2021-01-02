@@ -24,7 +24,10 @@ const Categories = () => {
             underline = false;
           }
           return (
-            <li key={i} className={`${underline ? "underline" : ""}`}>
+            <li
+              key={"all-categories-" + i}
+              className={`${underline ? "underline" : ""}`}
+            >
               <Link
                 to={`/cat/${category}`}
                 onClick={() => setCurrentCategory(category)}
@@ -38,9 +41,10 @@ const Categories = () => {
       <div className="drinks">
         {drinks.map((drink, i) => {
           if (currentCategory === drink.category) {
-            return <SingleCategoryItem key={i} {...drink} />
-          } if (currentCategory === "Wszystkie") {
-            return <SingleCategoryItem key={i} {...drink} />
+            return <SingleCategoryItem key={"drinks-" + i} {...drink} />
+          }
+          if (currentCategory === "Wszystkie") {
+            return <SingleCategoryItem key={"drinks-all-" + i} {...drink} />
           }
         })}
       </div>
