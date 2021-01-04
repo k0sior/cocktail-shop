@@ -590,7 +590,6 @@ Main
 .section-main {
   position: relative;
   left: 8vw;
-  width: 90vw;
   margin-top: 20px;
   text-align: center;
   display: grid;
@@ -604,6 +603,7 @@ Main
   align-items: center;
   justify-content: center;
   text-align: center;
+  
 }
 
 .super-promo {
@@ -630,7 +630,8 @@ Main
 
 .main-col-2 {
   grid-area: col2;
-  margin-top: 50px;
+  margin: 50px 0;
+  padding-left: 100px;
 }
 
 /* 
