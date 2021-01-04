@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 //context
 import { useGlobalContext } from '../context';
 // data 
-import { logo, links, social } from "../data"
+import { logo, links,  /* social */ } from "../data"
 // Components
 import SearchBox from "./SearchBox"
 import Modal from "./Modal"
@@ -35,7 +35,7 @@ const Header = () => {
               const { id, name, url } = items;
               // if name === category 
               if (id === 2) {
-                return <li key={"category"+id}>
+                return <li key={"category-" + id}>
                   <Link
                     to={`${url}`}
                     className="nav-link"
@@ -46,7 +46,7 @@ const Header = () => {
                   </Link>
                 </li>
               }
-              return <li key={"category"+id}>
+              return <li key={"category-" + id}>
                 <Link
                   to={`${url}`}
                   className="nav-link"

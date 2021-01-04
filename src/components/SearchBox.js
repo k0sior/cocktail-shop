@@ -5,7 +5,7 @@ import { useGlobalContext } from '../context'
 
 const SearchBox = () => {
   const { setSearch, search, drinks } = useGlobalContext();
-  const [showSearchList, setShowSearchList] = useState(true);
+  const [showSearchList, setShowSearchList] = useState(false);
   const [isEmptyBox, setIsEmptyBox] = useState(false)
   const searchValue = useRef('');
 
@@ -55,7 +55,6 @@ const SearchBox = () => {
             onChange={searchCocktail}
             onClick={handleList}
           />
-          {/* <button className="btn btn-primary">Szukaj</button> */}
         </div>
       </form>
       <div className={`${showSearchList ? "search-list search-list-show" : "search-list"}`} onMouseLeave={() => setShowSearchList(false)}>
@@ -64,7 +63,7 @@ const SearchBox = () => {
             const { id, name, image, glass, category } = drink;
             return (
               <Link
-                key={"search-list-item-"+i}
+                key={"search-list-item-" + i}
                 to={`/drink/${id}`}
                 onClick={() => setShowSearchList(false)}
               >
@@ -77,8 +76,8 @@ const SearchBox = () => {
                 </li>
               </Link>
             )
-          })
-          }
+          })}
+
         </ul>
       </div>
     </div >

@@ -61,7 +61,7 @@ const Main = () => {
 
       {/* COLUMN 2 */}
       <article className="main-col-2">
-        <h2>col2</h2>
+        <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente necessitatibus, molestiae nobis sint quibusdam veniam aspernatur in velit odio, atque perferendis ipsam numquam, quasi rem reprehenderit voluptatibus culpa aliquam praesentium!</h4>
       </article>
     </section>
 
