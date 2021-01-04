@@ -603,7 +603,7 @@ Main
   align-items: center;
   justify-content: center;
   text-align: center;
-  
+
 }
 
 .super-promo {
@@ -717,6 +717,10 @@ Categories
   display: flex;
   align-self: center;
   flex-direction: column;
+  position: relative;
+  left: 5vw;
+  width: 90vw;
+
 }
 
 .cocktail-section h2 {
@@ -746,17 +750,76 @@ Categories
   align-items: baseline;
 }
 
+.cocktail-section h2 {
+  align-self: center;
+  width: 500px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.drink {
+  display: grid;
+  grid-template-rows: 500px auto;
+  grid-template-columns: 45vw 45vw;
+  grid-template-areas:
+    "image main"
+    "secondary secondary";
+
+}
+
 .drink img {
+  grid-area: image;
+  justify-self: center;
+  align-self: center;
   width: 450px;
   height: 450px;
+  margin-right: -100px;
 }
 
-.drink-data {
-  text-align: left;
+.drink-data-main {
+  grid-area: main;
+  align-self: center;
+  justify-self: left;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 300px;
+}
+.drink-data-main p {
+  margin-left: 15px;;
 }
 
-.drink-data-ingredients h4 {
-  margin-right: 0.4rem;
+.drink-data-price {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  margin: 10px;
+}
+
+.drink-data-name {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  margin: 10px;
+}
+
+.drink-data-main button {
+  margin-top: 25px;
+}
+.drink-data-secondary {
+  grid-area: secondary;
+  justify-self: center;
+}
+
+.drink-data-secondary table {
+  border-collapse: collapse;
+}
+
+.drink-data-secondary th, td {
+  border: 1px solid black;
+  padding: 0.8rem;
 }
 
 /* 
@@ -797,7 +860,7 @@ Contact form
   justify-content: left;
 }
 
-.contact-form > * {
+.contact-form>* {
   margin: 8px 0;
 }
 
@@ -943,7 +1006,7 @@ Footer
   bottom: 0;
   display: flex;
   flex-direction: column;
-  margin: 30px 0 ;
+  margin: 30px 0;
 }
 
 @media screen and (max-width: 800px) {

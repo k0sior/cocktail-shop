@@ -82,38 +82,16 @@ const SingleDrink = () => {
       <h2 className="section-title">{name}</h2>
       <div className="drink">
         <img src={image} alt={name} />
-        <article className="drink-data">
-          <figure className="drink-data-name">
-            <p>Nazwa:</p>
-            <h4>{name}</h4>
-          </figure>
-          <figure className="drink-data-price">
-            <p>Cena:</p>
-            <h4>${(Math.random() * 100).toFixed(2)}</h4>
-          </figure>
-          <figure className="drink-data-info">
-            <p>Informacje:</p>
-            <h4>{info}</h4>
-          </figure>
-          <figure className="drink-data-category">
-            <p>Kategoria:</p>
-            <h4>{category}</h4>
-          </figure>
-          <figure className="drink-data-glass">
-            <p>Naczynie:</p>
-            <h4>{glass}</h4>
-          </figure>
-          <figure className="drink-data-ingredients">
-            <p>Potrzebne składniki:</p>
-            {ingredients.map((item, i) => {
-              return item ?
-                <h4 key={"drink-data-ingredients"+i}>{item},</h4> : null
-            })}
-          </figure>
-          <figure className="drink-data-intruction">
-            <p>Sposób przyrządzenia:</p>
-            <h4 >{instructions}</h4>
-          </figure>
+        {/* primary info */}
+        <div className="drink-data-main">
+          <div className="drink-data-name">
+            <h3>Nazwa:</h3>
+            <p><span>{name}</span></p>
+          </div>
+          <div className="drink-data-price">
+            <h3>Cena:</h3>
+            <p><span>${(Math.random() * 100).toFixed(2)}</span></p>
+          </div>
           <button
             className="btn add-to-cart-btn btn-primary"
             onClick={() => addToCart(id)}
@@ -121,7 +99,42 @@ const SingleDrink = () => {
             dodaj do koszyka
             <FaCartPlus style={{ marginTop: 5, marginLeft: 5 }} />
           </button>
-        </article>
+        </div>
+        {/* secondary info */}
+        <div className="drink-data-secondary">
+          <table className="secondary-table">
+            <tbody>
+              <tr className="drink-data-info">
+                <th>Informacje:</th>
+                <td><span>{info}</span></td>
+              </tr>
+              <tr className="drink-data-category">
+                <th>Kategoria:</th>
+                <td><span>{category}</span></td>
+              </tr>
+              <tr className="drink-data-glass">
+                <th>Naczynie:</th>
+                <td><span>{glass}</span></td>
+              </tr>
+              <tr className="drink-data-ingredients">
+                <th>Potrzebne składniki:</th>
+                <td>
+                  <ul>
+                    {ingredients.map((item, i) => {
+                      return item ? <li key={"single-drink-ingredient-" + i}>
+                        <span key={"drink-data-ingredients" + i}>{item}</span>
+                      </li> : null
+                    })}
+                  </ul>
+                </td>
+              </tr>
+              <tr className="drink-data-intruction">
+                <th>Sposób przyrządzenia:</th>
+                <td><span>{instructions}</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
   )
