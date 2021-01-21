@@ -31,7 +31,8 @@ const Cart = () => {
           })}
         </article>
         <div className="cart-summary">
-          <h3>Suma: $<span>{total.toFixed(2)}</span></h3>          <button
+          <h3>Suma: $<span>{total.toFixed(2)}</span></h3>
+          <button
             className="btn btn-green btn-checkout"
             onClick={() => { console.log("go to checkout") }}
           >

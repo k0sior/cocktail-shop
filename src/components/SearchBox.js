@@ -6,7 +6,6 @@ import { useGlobalContext } from '../context'
 const SearchBox = () => {
   const { setSearch, search, drinks } = useGlobalContext();
   const [showSearchList, setShowSearchList] = useState(false);
-  const [isEmptyBox, setIsEmptyBox] = useState(false)
   const searchValue = useRef('');
 
   const searchCocktail = () => {
@@ -25,14 +24,6 @@ const SearchBox = () => {
   let searchDrink = drinks.filter((drink) => {
     return drink.name.toLowerCase().indexOf(search.toLowerCase()) !== -1 || drink.category.toLowerCase().indexOf(search.toLowerCase()) !== -1 || drink.glass.toLowerCase().indexOf(search.toLowerCase()) !== -1
   })
-
-  useEffect(() => {
-    if (searchDrink.length < 1) {
-      setIsEmptyBox(true)
-    } else {
-      setIsEmptyBox(false)
-    }
-  }, [search])
 
   useEffect(() => {
     if (search.length >= 1) {
@@ -77,7 +68,7 @@ const SearchBox = () => {
               </Link>
             )
           })}
-
+          <li><p style={{marginTop: 28, marginLeft:57, fontWeight: 'bold'}}>Nie znaleziono więcej przedmiotów.</p></li>
         </ul>
       </div>
     </div >

@@ -1,14 +1,15 @@
 // React
 import React, { useEffect, useState } from 'react'
-import { FaBars, FaShoppingCart } from "react-icons/fa"
+import { FaShoppingCart } from "react-icons/fa"
 import { Link } from 'react-router-dom'
 //context
 import { useGlobalContext } from '../context';
 // data 
 import { logo, links,  /* social */ } from "../data"
 // Components
-import SearchBox from "./SearchBox"
 import Modal from "./Modal"
+import SearchBox from "./SearchBox"
+
 
 const Header = () => {
   const { openModal, closeModal, handleModalOpen, cart } = useGlobalContext();
@@ -78,9 +79,7 @@ const Header = () => {
             })}
              */}
           </ul>
-          <button className="nav-toggle">
-            <FaBars />
-          </button>
+
         </div>
       </div>
       <div className="nav-bottom" onMouseOver={handleModalOpen}>

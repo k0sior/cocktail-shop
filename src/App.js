@@ -12,6 +12,7 @@ import Error from './pages/Error'
 // components
 import SingleDrink from './components/SingleDrink'
 import Header from './components/Header'
+import Sidebar from './components/Sidebar'
 import Footer from './components/Footer'
 import Loading from './components/Loading'
 //context 
@@ -27,6 +28,7 @@ function App() {
   return (
     <Router>
       <Header />
+      <Sidebar />
       <Switch>
         <Route exact path="/">
           <Home />

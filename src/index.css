@@ -239,6 +239,9 @@ Buttons
 Navbar
 ======
 */
+.sidebar-toggle {
+  display: none;
+}
 
 .nav {
   position: sticky;
@@ -765,12 +768,14 @@ Categories
     "image main"
     "secondary secondary";
   letter-spacing: 0;
-  
+
 }
 
 .drink table {
-  max-width: 1000px;;
+  max-width: 1000px;
+  ;
 }
+
 .drink img {
   grid-area: image;
   justify-self: center;
@@ -791,8 +796,10 @@ Categories
   align-items: center;
   min-width: 300px;
 }
+
 .drink-data-main p {
-  margin-left: 15px;;
+  margin-left: 15px;
+  ;
 }
 
 .drink-data-price {
@@ -812,6 +819,7 @@ Categories
 .drink-data-main button {
   margin-top: 25px;
 }
+
 .drink-data-secondary {
   grid-area: secondary;
   justify-self: center;
@@ -821,7 +829,8 @@ Categories
   border-collapse: collapse;
 }
 
-.drink-data-secondary th, td {
+.drink-data-secondary th,
+td {
   border: 1px solid black;
   padding: 0.8rem;
 }
@@ -1013,28 +1022,75 @@ Footer
   margin: 30px 0;
 }
 
+
+/* 
+====== 
+Sidebar
+======
+*/
+
+.sidebar {
+  display: none;
+}
+
+/* screen-width */
+
 @media screen and (max-width: 800px) {
-  .nav-center {
+  .div-ads img {
+    position: absolute;
+    height: 300px;
+    width: 600px;
+    transition: var(--transition);
+  }
+
+  .prev-btn {
+    margin-left: 250px;
+  }
+
+  .next-btn {
+    margin-right: 250px;
+  }
+
+  .nav {
     display: none;
   }
 
-  .nav-right li {
-    display: none;
+/* 
+====== 
+Sidebar
+======
+*/
+
+  .sidebar {
+    display: flex;
+    position: absolute;
+    left: 2vw;
   }
 
-  .nav-links {
-    display: none;
+  .sidebar-toggle {
+    display: flex;
+    font-size: 1rem;
+    flex-direction: column;
   }
 
+  .sidebar-links{
+    display: flex;
+    flex-direction: column;
+  }
+  
   .nav-toggle {
     display: flex;
-    top: 2rem;
+    top: 1rem;
     left: 3rem;
     font-size: 2.5rem;
     background: transparent;
     border-color: transparent;
-    color: var(--clr-grey-4);
+    color: var(--clr-grey-3);
     cursor: pointer;
+    padding: 10px;
+    border: 1px solid var(--clr-primary-7);
+    background-color: var(--clr-primary-7);
+    border-radius: 100%;
   }
 
   .nav-toggle button {
@@ -1043,10 +1099,21 @@ Footer
     width: 25px;
   }
 }
+
 @media screen and (max-width: 1000px) {
   .drink img {
     width: 350px;
     height: 350px;
     margin: 0;
+  }
+
+  .section-main {
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    margin: 0;
+  }
+  .main-col-2 {
+    padding: 0 10vw;
   }
 }
