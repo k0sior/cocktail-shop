@@ -1055,42 +1055,98 @@ Sidebar
     display: none;
   }
 
-/* 
+  /* 
 ====== 
 Sidebar
 ======
 */
 
   .sidebar {
-    display: flex;
-    position: absolute;
-    left: 2vw;
+    display: block;
+    position: sticky;
+    padding: 25px 0 10px 25px;
+    z-index: 1;
+    background-color: var(--clr-primary-9);
+    transition: 0.2s all linear;
+    border-bottom: 2px solid var(--clr-grey-5);
   }
 
   .sidebar-toggle {
-    display: flex;
+    position: absolute;
+    left: 0;
+    top: 7.3rem;
     font-size: 1rem;
+    display: flex;
     flex-direction: column;
+    padding: 0 0 25px 25px;
+    background-color: var(--clr-primary-9);
+    border-bottom: 2px solid var(--clr-grey-5);
+    border-right: 2px solid var(--clr-grey-5);
+    border-bottom-right-radius: var(--radius);
+    transition: all 200ms linear;
+    opacity: 1;
   }
 
-  .sidebar-links{
-    display: flex;
-    flex-direction: column;
+  .sidebar-closed {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    background: none;
+    transition: all 200ms linear;
+    left: -250px;
   }
-  
+
+  .sidebar-links {
+    font-size: 2rem;
+    height: auto;
+    width: auto;
+    min-width: 250px;
+    display: block;
+    border-radius: var(--radius);
+    padding: 0 10px 10px 10px;
+    margin: 5px;
+  }
+
+  .sidebar-link {
+    color: var(--clr-grey-2);
+
+  }
+
+  .sidebar-link:hover {
+    color: black;
+    text-decoration: none;
+  }
+
+  .sidebar-link li {
+    margin: 5px;
+  }
+
+  .sidebar-link li:hover {
+    background-color: var(--clr-primary-10);
+    border-radius: var(--radius);
+  }
+
   .nav-toggle {
+    position: relative;
     display: flex;
-    top: 1rem;
-    left: 3rem;
+    left: 4rem;
+    top: -0.5rem;
     font-size: 2.5rem;
     background: transparent;
     border-color: transparent;
     color: var(--clr-grey-3);
     cursor: pointer;
     padding: 10px;
-    border: 1px solid var(--clr-primary-7);
-    background-color: var(--clr-primary-7);
+    margin: 10px;
+    border: 1px solid var(--clr-primary-8);
+    background-color: var(--clr-primary-8);
     border-radius: 100%;
+    transition: 0.4s all linear;
+  }
+
+  .nav-toggle:hover {
+    color: var(--clr-grey-1);
+    background-color: var(--clr-primary-7);
   }
 
   .nav-toggle button {
@@ -1098,6 +1154,17 @@ Sidebar
     height: 25px;
     width: 25px;
   }
+}
+
+.sidebar-logo {
+  position: absolute;
+  right: 50px;
+  top: -20px;
+}
+
+.sidebar-logo img {
+  width: 200px;
+  height: auto;
 }
 
 @media screen and (max-width: 1000px) {
@@ -1113,6 +1180,7 @@ Sidebar
     left: 0;
     margin: 0;
   }
+
   .main-col-2 {
     padding: 0 10vw;
   }

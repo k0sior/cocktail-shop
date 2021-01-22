@@ -1,27 +1,51 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FaBars } from "react-icons/fa"
-import { links } from '../data'
+import { links, logo } from '../data'
 
 const Sidebar = () => {
 
   const [toggleSidebar, setToggleSidebar] = useState(false)
+
+  const closeSidebar = () => {
+    setToggleSidebar(false)
+  }
   return (
     <div className="sidebar">
+      <div className="sidebar-logo">
+        <img src={logo.url} alt={logo.name}/>
+      </div>
       <button className="nav-toggle">
-        <FaBars onClick={() => console.log('setSidebar()')} />
+        <FaBars onClick={() => setToggleSidebar(!toggleSidebar)} />
       </button>
-      <ul className="sidebar-links">
-        <li>HEJ</li>
-        {links.map((link, i) => {
-          const { name, url } = link;
-          <li key={"sidebar-link" + i}>
-            <Link to={`${url}`}>
-              {name}
-            </Link>
+      <aside className={`${toggleSidebar ? 'sidebar-toggle' : 'sidebar-closed'}`}>
+        <ul className="sidebar-links">
+          {links.map((link, i) => {
+            const { name, url } = link;
+            return (
+              <Link
+                to={url}
+                key={"sidebar-link" + i}
+                className='sidebar-link'
+                onClick={() => closeSidebar()}
+              >
+                <li>
+                  {name}
+                </li>
+              </Link>
+            )
+          })}
+          <Link
+            to='/cart'
+            className='sidebar-link'
+            onClick={() => closeSidebar()}
+          >
+            <li >
+              Koszyk
           </li>
-        })}
-      </ul>
+          </Link>
+        </ul>
+      </aside>
     </div>
   )
 }
