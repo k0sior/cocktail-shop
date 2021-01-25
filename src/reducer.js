@@ -4,6 +4,7 @@ const reducer = (state, action) => {
   switch (action.type) {
 
     case 'ADD_TO_CART':
+      // eslint-disable-next-line
       let newItem = state.drinksDB.find((item) => {
         if (item.id === action.payload) {
           return item
@@ -20,6 +21,7 @@ const reducer = (state, action) => {
 
     case "INCREASE":
       let increaseItemAmount = state.cart.map((cartItem) => {
+        // eslint-disable-next-line
         if (cartItem.id == action.payload) {
           return { ...cartItem, amount: cartItem.amount + 1 }
         }
@@ -29,6 +31,7 @@ const reducer = (state, action) => {
 
     case "DECREASE":
       let decreaseItemAmount = state.cart.map((cartItem) => {
+        // eslint-disable-next-line
         if (cartItem.id == action.payload) {
           if (Number(cartItem.amount) > 1)
             return { ...cartItem, amount: cartItem.amount - 1 }
@@ -38,6 +41,7 @@ const reducer = (state, action) => {
       return { ...state, cart: decreaseItemAmount }
 
     case 'REMOVE_ITEM':
+      // eslint-disable-next-line
       return { ...state, cart: state.cart.filter((item) => item.id != action.payload) }
 
     case "GET_TOTALS":

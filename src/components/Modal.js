@@ -16,7 +16,7 @@ const Modal = () => {
     setCurrentCategory(event);
     closeModal()
   }
-  
+
   return (
     <aside className={`${isModalOpen ? "modal-container show-modal" : "modal-container"}`} onMouseLeave={handleModalOpen} >
       <div className="modal-div">
@@ -42,7 +42,8 @@ const Modal = () => {
           </ul>
         </div>
         <div className="subcategory-container">
-          {drinks.map((item, i) => {
+          {// eslint-disable-next-line
+          drinks.map((item, i) => {
             const { id, name, category, image } = item;
             if (category === previewCat) {
               return (

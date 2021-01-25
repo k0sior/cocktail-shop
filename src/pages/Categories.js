@@ -38,8 +38,9 @@ const Categories = () => {
           )
         })}
       </ul>
-      <div className="drinks">
-        {drinks.map((drink, i) => {
+      <div className="drinks">        
+        {// eslint-disable-next-line
+        drinks.map((drink, i) => {
           if (currentCategory === drink.category) {
             return <SingleCategoryItem key={"drinks-" + i} {...drink} />
           }

@@ -7,7 +7,7 @@ import { useGlobalContext } from '../context'
 
 const Cart = () => {
   const { cart, total, clearCart } = useGlobalContext();
-  {/* handling empty cart*/ }
+  // handling empty cart
   if (cart.length === 0) {
     return (
       <section className="section-cart-empty">

@@ -13,7 +13,6 @@ import Error from './pages/Error'
 import SingleDrink from './components/SingleDrink'
 import Header from './components/Header'
 import Sidebar from './components/Sidebar'
-import Footer from './components/Footer'
 import Loading from './components/Loading'
 //context 
 import { useGlobalContext } from "./context"
@@ -55,7 +54,6 @@ function App() {
           <Error />
         </Route>
       </Switch>
-      <Footer />
     </Router>
   );
 }
