@@ -82,7 +82,6 @@ const AppProvider = ({ children }) => {
     // eslint-disable-next-line
   }, [])
 
-
   // cart functions
 
   const addToCart = (id) => {
