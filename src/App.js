@@ -56,6 +56,11 @@ function App() {
         <Route exact path="/cart">
           <Cart />
         </Route>
+        <Route exact path="/cocktail-shop">
+          <Link to="/">
+            <button className="btn btn-primary">Przejdź do strony głównej</button>
+          </Link>
+        </Route>
         <Route path="*">
           <Error />
         </Route>
