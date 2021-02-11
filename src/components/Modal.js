@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { useGlobalContext } from '../context';
 
 const Modal = () => {
+
   const [active, setActive] = useState(false)
   const [previewCat, setPreviewCat] = useState("Ordinary drink")
 

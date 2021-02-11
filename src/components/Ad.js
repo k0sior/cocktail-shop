@@ -5,6 +5,7 @@ import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 import { advertises } from "../data";
 
 const Ad = () => {
+  // eslint-disable-next-line
   const [displayAds, setDisplayAds] = useState(advertises)
   const [index, setIndex] = useState(0)
 

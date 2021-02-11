@@ -8,7 +8,9 @@ import { useGlobalContext } from "../context";
 const Main = () => {
 
   const { drinks, setCurrentCategory } = useGlobalContext();
+  // eslint-disable-next-line
   const [getRandomDrink, setGetRandomDrink] = useState((Math.random() * drinks.length).toFixed(0));
+  // eslint-disable-next-line
   const [drinkPrice, setDrinkPrice] = useState((Math.random() * 100).toFixed(2));
 
   return (

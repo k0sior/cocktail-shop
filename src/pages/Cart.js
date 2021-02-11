@@ -7,12 +7,13 @@ import { useGlobalContext } from '../context'
 
 const Cart = () => {
   const { cart, total, clearCart } = useGlobalContext();
+  
   // handling empty cart
   if (cart.length === 0) {
     return (
       <section className="section-cart-empty">
         <div className="cart-title">
-          <h1>Twój koszyk jest pusty!</h1>
+          <h2>Twój koszyk jest pusty!</h2>
         </div>
         <Link to="/">
           <button className="btn btn-primary">Wróć do strony głównej</button>

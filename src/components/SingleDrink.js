@@ -1,7 +1,7 @@
 //react
 import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { FaCartPlus } from "react-icons/fa"
+import { FaCartPlus, FaStar } from "react-icons/fa"
 //context
 import { useGlobalContext } from '../context'
 
@@ -9,10 +9,21 @@ import Loading from './Loading'
 const url = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i='
 
 const SingleDrink = () => {
+  
   const { id } = useParams();
+  const { setCurrentCategory, addToCart, addToFavorites, favorite } = useGlobalContext();
+  
   const [loading, setLoading] = useState(false);
   const [cocktail, setCocktail] = useState(null);
-  const { setCurrentCategory, addToCart } = useGlobalContext();
+  const [isFavorite, setIsFavorite] = useState(false)
+  
+  useEffect(() => {
+    favorite.map((item) => {
+      if (item.id === id) {
+        setIsFavorite(true)
+      }
+    })
+  }, [favorite])
 
   useEffect(() => {
     setLoading(true);
@@ -92,13 +103,21 @@ const SingleDrink = () => {
             <h3>Cena:</h3>
             <p><span>${(Math.random() * 100).toFixed(2)}</span></p>
           </div>
-          <button
-            className="btn add-to-cart-btn btn-primary"
-            onClick={() => addToCart(id)}
-          >
-            dodaj do koszyka
+          <div className="btn-container">
+            <button
+              className="btn add-to-cart-btn btn-primary"
+              onClick={() => addToCart(id)}
+            >
+              dodaj do koszyka
             <FaCartPlus style={{ marginTop: 5, marginLeft: 5 }} />
-          </button>
+            </button>
+            <button
+              className={`btn btn-fav btn-primary ${isFavorite ? 'favorite' : null}`}
+              onClick={() => addToFavorites(id)}
+            >
+              dodaj do ulubionych <FaStar />
+            </button>
+          </div>
         </div>
         {/* secondary info */}
         <div className="drink-data-secondary">

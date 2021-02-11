@@ -1,6 +1,6 @@
 // React
 import React, { useEffect, useState } from 'react'
-import { FaShoppingCart } from "react-icons/fa"
+import { FaShoppingCart, FaHeart } from "react-icons/fa"
 import { Link } from 'react-router-dom'
 //context
 import { useGlobalContext } from '../context';
@@ -12,9 +12,11 @@ import SearchBox from "./SearchBox"
 
 
 const Header = () => {
-  const { openModal, closeModal, handleModalOpen, cart } = useGlobalContext();
+
+  const { openModal, closeModal, handleModalOpen, cart, favorite } = useGlobalContext();
 
   const [cartAmount, setCartAmount] = useState(false)
+  const [favoriteAmount, setFavoriteAmount] = useState(false)
 
   useEffect(() => {
     if (cart.length < 1) {
@@ -23,6 +25,14 @@ const Header = () => {
       setCartAmount(true)
     }
   }, [cart])
+
+  useEffect(() => {
+    if (favorite.length < 1) {
+      setFavoriteAmount(false)
+    } else {
+      setFavoriteAmount(true)
+    }
+  }, [favorite])
 
   return (
     <header className="nav">
@@ -68,6 +78,14 @@ const Header = () => {
               </Link>
               <div className={`${cartAmount ? "cart-size" : "display-none"}`}>
                 <p>{Number(cart.length)}</p>
+              </div>
+              <Link to="/fav">
+                <FaHeart style={{
+                  marginLeft: 25,
+                }} />
+              </Link>
+              <div className={`${favoriteAmount ? "favorite-size" : "display-none"}`}>
+                <p>{Number(favorite.length)}</p>
               </div>
             </li>
             {/* 

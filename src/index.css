@@ -251,7 +251,7 @@ Navbar
   display: flex;
   flex-direction: column;
   margin: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 .nav-top {
@@ -317,6 +317,24 @@ Navbar
 }
 
 .cart-size p {
+  margin: -1px 0 0 0;
+}
+
+.favorite-size {
+  position: absolute;
+  text-align: center;
+  width: 25px;
+  height: 25px;
+  color: white;
+  font-size: 16px;
+  border: 1px solid var(--clr-red-dark);
+  background-color: var(--clr-red-dark);
+  border-radius: 100%;
+  margin: -28px 0 0 85px;
+  z-index: -1;
+}
+
+.favorite-size p {
   margin: -1px 0 0 0;
 }
 
@@ -674,7 +692,7 @@ Categories
 
 .drinks {
   margin: 50px;
-  max-width: 900px;
+  max-width: 1150px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -690,6 +708,7 @@ Categories
   align-items: center;
   justify-content: center;
   text-align: center;
+  margin: 25px;
 }
 
 .single-drink img {
@@ -702,8 +721,40 @@ Categories
   opacity: 0.8;
 }
 
+.no-star {
+  opacity: 0;
+}
+
 .single-drink-info:hover {
   text-decoration: underline;
+}
+
+.fav-star-container {
+  z-index: 1;
+  position: absolute;
+  margin-right: -160px;
+  margin-top: 240px;
+}
+
+.display-star {
+  opacity: 1;
+}
+
+.fav-star {
+  border: none;
+  background: none;
+}
+
+.fav-star:hover {
+  color: rgb(230, 185, 73);
+  cursor: pointer;
+}
+
+.favorite {
+  color: rgb(214, 169, 55);
+  opacity: 1;
+  border: none;
+  background: none;
 }
 
 .add-to-cart-btn {
@@ -723,7 +774,6 @@ Categories
   position: relative;
   left: 5vw;
   width: 90vw;
-
 }
 
 .cocktail-section h2 {
@@ -768,12 +818,19 @@ Categories
     "image main"
     "secondary secondary";
   letter-spacing: 0;
+}
 
+.btn-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-fav:hover {
+  color: darkgoldenrod;
 }
 
 .drink table {
   max-width: 1000px;
-  ;
 }
 
 .drink img {
@@ -799,7 +856,6 @@ Categories
 
 .drink-data-main p {
   margin-left: 15px;
-  ;
 }
 
 .drink-data-price {
@@ -1009,6 +1065,40 @@ Cart
 
 /* 
 ====== 
+Favorites
+======
+*/
+
+.empty-favorites {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 20px;
+}
+.empty-favorites h2 {
+  padding-top: 20px;
+}
+
+.favorites {
+  position: relative;
+  left: 5vw;
+}
+
+.fav-btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 150px;
+}
+
+.fav-icon {
+  width: 20px;
+  height: auto;
+}
+
+/* 
+====== 
 Footer
 ======
 */
@@ -1090,7 +1180,7 @@ Sidebar
   .sidebar-closed {
     position: absolute;
     opacity: 0;
-    width:0;
+    width: 0;
     background: none;
     transition: all 300ms linear;
     left: -250px;

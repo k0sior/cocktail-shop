@@ -20,6 +20,7 @@ const AppProvider = ({ children }) => {
   const [search, setSearch] = useState("");
   const [drinks, setDrinks] = useState([]);
   const [currentCategory, setCurrentCategory] = useState("Wszystkie");
+  const [favorite, setFavorite] = useState([]);
   const [state, dispatch] = useReducer(reducer, initialState)
 
   const openModal = () => {
@@ -34,6 +35,8 @@ const AppProvider = ({ children }) => {
       closeModal();
     }
   }
+
+  //setting up database
 
   const fetchDrinks = useCallback(async () => {
     setLoading(true)
@@ -70,6 +73,7 @@ const AppProvider = ({ children }) => {
     } catch (error) {
       console.log(error);
     }
+
     setLoading(false)
   }, [])
 
@@ -77,7 +81,9 @@ const AppProvider = ({ children }) => {
     fetchDrinks()
   }, [])
 
-  //reducer functions
+
+  // cart functions
+
   const addToCart = (id) => {
     dispatch({ type: 'ADD_TO_CART', payload: id })
     dispatch({ type: "GET_TOTALS" })
@@ -102,6 +108,30 @@ const AppProvider = ({ children }) => {
     dispatch({ type: "GET_TOTALS" })
   }
 
+  // favorite functions
+
+  const addToFavorites = (id) => {
+    // eslint-disable-next-line
+    drinks.find((drink) => {
+      if (id === drink.id) {
+        if (favorite.indexOf(drink) === -1) {
+          setFavorite([...favorite, drink])
+        } else {
+          alert('Przedmiot znajduje się już w ulubionych.')
+        }
+      }
+    })
+  }
+
+  const removeFromFavorites = (id) => {
+    setFavorite(favorite.filter((item) => item.id !== id))
+  }
+
+  const fromFavoriteToCart = (id) => {
+    addToCart(id)
+    setFavorite(favorite.filter((item) => item.id !== id))
+  }
+
   return <AppContext.Provider
     value={{
       ...state,
@@ -119,7 +149,12 @@ const AppProvider = ({ children }) => {
       increaseAmount,
       decreaseAmount,
       removeItem,
-      clearCart
+      clearCart,
+      favorite,
+      setFavorite,
+      addToFavorites,
+      removeFromFavorites,
+      fromFavoriteToCart,
     }}>
     {children}
   </AppContext.Provider>

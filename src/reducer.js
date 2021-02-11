@@ -14,7 +14,12 @@ const reducer = (state, action) => {
 
       let newCart = [...state.cart, newItem]
 
-      return { ...state, cart: newCart }
+      // eslint-disable-next-line
+      if (state.cart.indexOf(newItem) == -1) {
+        return { ...state, cart: newCart }
+      } else {
+        return {...state }
+      }
 
     case "CLEAR_CART":
       return { ...state, cart: [] }
