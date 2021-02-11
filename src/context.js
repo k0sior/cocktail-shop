@@ -79,6 +79,7 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     fetchDrinks()
+    // eslint-disable-next-line
   }, [])
 
 
