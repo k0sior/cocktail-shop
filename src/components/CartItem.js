@@ -8,6 +8,7 @@ const CartItem = ({ id, image, name, price, amount }) => {
 
   const { removeItem, increaseAmount, decreaseAmount} = useGlobalContext();
 
+
   return (
     <div className="cart-item" key={"single-cart-item"+id}>
       <div className="cart-item-info">
