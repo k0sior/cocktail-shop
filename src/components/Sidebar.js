@@ -2,14 +2,17 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FaBars } from "react-icons/fa"
 import { links, logo } from '../data'
+import { useGlobalContext } from '../context'
 
 const Sidebar = () => {
 
   const [toggleSidebar, setToggleSidebar] = useState(false)
-
+  
   const closeSidebar = () => {
     setToggleSidebar(false)
   }
+
+
   return (
     <div className="sidebar">
       <div className="sidebar-logo">
@@ -42,6 +45,15 @@ const Sidebar = () => {
           >
             <li >
               Koszyk
+          </li>
+          </Link>
+          <Link
+            to='/fav'
+            className='sidebar-link'
+            onClick={() => closeSidebar()}
+          >
+            <li >
+              Ulubione
           </li>
           </Link>
         </ul>
